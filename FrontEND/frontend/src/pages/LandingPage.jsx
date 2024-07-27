@@ -24,8 +24,8 @@ const LandingPage = () => {
         const res = await fetch('/api/listing/get?featured=true&limit=4');
         if (res.ok) {
           const data = await res.json();
-          console.log(data);
-          setFeaturedListings(data);
+          console.log(data.data);
+          setFeaturedListings(data.data);
           fetchCommunicationListings();
         } else {
           throw new Error('Failed to fetch featured listings');
@@ -40,7 +40,7 @@ const LandingPage = () => {
         const res = await fetch('/api/listing/get?type=communication&limit=4');
         if (res.ok) {
           const data = await res.json();
-          setCommunicationListings(data);
+          setCommunicationListings(data.data);
           fetchSaleListings();
         } else {
           throw new Error('Failed to fetch communication listings');
@@ -55,7 +55,7 @@ const LandingPage = () => {
         const res = await fetch('/api/listing/get?type=sale&limit=4');
         if (res.ok) {
           const data = await res.json();
-          setSaleListings(data);
+          setSaleListings(data.data);
         } else {
           throw new Error('Failed to fetch sale listings');
         }
